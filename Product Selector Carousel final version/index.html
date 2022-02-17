@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Product Selector Carousel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="http://fonts.cdnfonts.com/css/aller" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <!--Header-->
+    <header>
+      <span class="head">
+        <img class="logo" src="images/logo.png" alt="Aware logo">
+      </span>
+    </header>
+
+
+    <div class="subheading">
+      <div col-12 text-center>
+        <span class="title">
+          Product Selector Carousel
+        </span>
+      </div>
+    </div>
+
+
+    <div class="band">
+
+      <!--Get Started-->
+      <div class="row align-self-center container">
+        <div id="getStart">
+          <div class="col-12 text-center">
+            <h1 class="bolder" id="getStarted">
+              Choose your Investment option.
+            </h1>
+          </div>
+          <br>
+          <div class="col-12 text-center">
+            <button class="btn btn-primary">
+              Get Started
+            </button>
+          </div>
+        </div>
+
+        <!--Get Started Card-->
+        <div class="col-12 text-center">
+          <div class="swiper" id="getStarted2">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" data-name="Introducting your Investment options"
+                data-description=" Card 1 Description " data-price="Starting from $320" id="slider">
+                <div class="card">
+                  <a href="#">
+                    <img id="card-img" src="images/investment.jpg" alt="laptop image">
+                    <div class="card-body">
+                      <span class="card-category">Investments</span>
+                      <h3 class="card-heading">
+                        Introducing your investment options
+                      </h3>
+                      <p class="card-content">
+                        We’ve created a range of investment choices to help
+                        you fund your future in the way that works best for you.
+                      </p>
+                      <div class="card-footer">
+                        <img class="link-icon" src="images/arrow right.png" alt="right arrow">
+                        <span class="fake-link">Read more</span>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="bottom-heading">
+                    Socially Investment Options
+                    <br>
+                    Starting From $100
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper d-none justify-content-center" id="swiperList">
+        <div id="swiper-wrapper-cards" class="swiper-wrapper"></div>
+
+        <!--Footer-->
+        <div class="foot">
+          <div class="row text-center">
+            <div class="col-md-12 text-center">
+              <h3 id="card-name"></h3>
+              <h5>Description</h5>
+              <h3 id="card-price"></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="swiper-button-prev swiper"><img src="./images/backward.png"></div>
+        <div class="swiper-button-next swiper"><img src="./images/forward.png"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal box-->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-heading">Product Name</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="modal-img" id="modal-img" width="100%" src="images/investment.jpg" alt="investment image">
+            </div>
+            <div class="col-md-6">
+              <h5>Description: <br><br><span id="modal-content" class="card-description">Card 3</span></h5>
+              <h5>Category: <span id="modal-category" class="modal-category"></span></h5>
+              <h5>Price: $<span id="modal-price" class="c-red"> $6.00</span></h5>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
