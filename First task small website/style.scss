@@ -1,0 +1,260 @@
+//variables
+$primarycolor: #e5007e;
+$bgcolor: #fff;
+$color: #000;
+$lightcolor: #333;
+$fontwg: bold;
+$textdecor: none;
+@import url("http://fonts.cdnfonts.com/css/aller");
+
+$breakpoints: (
+  "small": (
+    min-width: 0,
+  ),
+  "medium": (
+    min-width: 768px,
+  ),
+  "large": (
+    min-width: 1024px,
+  ),
+) !default;
+
+@mixin screen-size($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    // If the key doesn't exist in the map
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. ' + 'Available breakpoints are: #{map-keys($breakpoints)}.';
+  }
+}
+
+//mixin
+@mixin font($fontsize) {
+  font-size: $fontsize;
+}
+
+@mixin line($lineht) {
+  line-height: $lineht;
+}
+
+//mainbody
+body {
+  background-color: #f2f2f2;
+  font-family: "Aller", Helvetica, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {  
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+
+  @include screen-size("medium") {
+    margin: 0px 48px;
+    padding: 0px;
+  }
+
+  @include screen-size("large") {
+    padding-top: 74px;
+    padding-bottom: 82px;
+    flex-direction: row;
+    margin: 0 56px;
+  }
+
+
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.31;
+    margin-top: 0;
+
+    @include screen-size("large") {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+      padding-right: 32px;
+    }
+
+
+    .head__title {
+      @include font(30px);
+      font-weight: $fontwg;
+      color: $color;
+      font-family: "Aller", Helvetica, Roboto, Arial, sans-serif;
+      margin-bottom: 0;
+    }
+
+    .head__title--second {
+      @include screen-size("medium") {
+        margin-bottom: 53px;
+      }
+
+      @include font(20px);
+      line-height: 1.4;
+      color: $lightcolor;
+      margin-bottom: 32px;
+    }
+
+    .medium-row {
+      @include screen-size("medium") {
+        display: flex;
+        flex-flow: row wrap;
+        height: 115px;
+        margin-bottom: 25px;
+      }
+
+      @include screen-size("large") {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .head__title-links {
+        @include font(20px);
+        @include line(40px);
+        font-family: europa, trebuchet, sans-serif;
+        text-decoration: $textdecor;
+        display: flex;
+        color: $primarycolor;
+        font-weight: $fontwg;
+        margin-bottom: 20px;
+
+        .head__icons {
+          width: 36px;
+          height: 36px;
+          color: $primarycolor;
+        }
+
+        .head__content {
+          padding-left: 3px;
+          margin-left: 4px;
+
+          &:hover {
+            color: $color;
+          }
+
+          @include screen-size("medium") {
+            width: 284px;
+          }
+
+          @include screen-size("large") {
+            margin-bottom: 21px;
+          } 
+        }
+      }
+    }
+  }
+
+  .blocks {
+    @include screen-size("medium") {
+      display: flex;
+      flex-flow: 0 0 50%;
+    }
+
+    @include screen-size("large") {
+      flex: 0 0 66.66%;
+      max-width: 66.66%;
+    }
+
+    .block1,
+    .block2 {
+      @include screen-size("medium") {
+        padding-right: 10px;
+      }
+
+      @include screen-size("large") {
+        padding-right: 12px;
+      }
+
+      ul {
+        padding: 0;
+        li {
+          background: $bgcolor;
+          list-style: none;
+          color: $color;
+          box-shadow: 0 0 5px grey;
+
+          .block1__box-links,
+          .block2__box-links {
+            @include font(18px);
+            text-decoration: $textdecor;
+            font-weight: $fontwg;
+            width: 100%;
+
+            a:visited {
+              color: $primarycolor;
+              &:hover {
+                color: $color;
+              }
+            }
+          }
+
+          .block1__content,
+          .block2__content {
+            @include screen-size("large") {
+              padding: 23px 30px 32px 30px;
+            }
+
+            padding: 22px 22px 29px 22px;
+            min-height: 200px;
+
+            .block1__subheading,
+            .block2__subheading {
+              @include font(22px);
+              font-weight: $fontwg;
+            }
+
+            span a {
+              background-color: $bgcolor;
+            }
+
+            p {
+              @include screen-size("medium") {
+                margin-bottom: 10px;
+              }
+
+              @include screen-size("large") {
+                margin: 0px 0px;
+                margin-top: 13px;
+                margin-bottom: 10px;
+              }
+
+              @include font(18px);
+              @include line(28px);
+            }
+
+            .block1__button,
+            .block2__button {
+              margin-top: 40px;
+              @include screen-size("medium") {
+                margin-top: 50px;
+              }
+
+              @include screen-size("large") {
+                margin-top: 8px;
+              }
+
+              @include font(20px);
+              color: $primarycolor;
+              text-decoration: $textdecor;
+              border: 2px solid $primarycolor;
+              font-weight: $fontwg;
+              padding: 5px 18px;
+              border-radius: 8px;
+              display: inline-block;
+              margin-top: 60px;
+
+              &:hover {
+                border: 2px solid $color;
+                color: $color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

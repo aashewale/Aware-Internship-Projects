@@ -1,0 +1,323 @@
+@import "./palette";
+@import "./space";
+@import "./variables";
+@import url("http://fonts.cdnfonts.com/css/aller");
+
+$breakpoints: (
+  "small": (
+    min-width: 0,
+  ),
+  "medium": (
+    min-width: 768px,
+  ),
+  "large": (
+    min-width: 1024px,
+  ),
+) !default;
+
+@mixin screen-size($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    // If the key doesn't exist in the map
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. ' + 'Available breakpoints are: #{map-keys($breakpoints)}.';
+  }
+}
+
+body {
+  color: $primary-color-02;
+  font-family: "Aller", Helvetica, Roboto, Arial, sans-serif;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 720px;
+    padding: 0 0;
+    background-color: $primary-color-01;
+
+    @include screen-size("medium") {
+      display: flex;
+      width: 768px;
+      height: $space-13;
+    }
+
+    @include screen-size("large") {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    header {
+      .head {
+        background-color: $primary-color-01;
+        width: $space-22;
+        height: $space-15;
+        padding: 12px 216px 22px 24px;
+        position: fixed;
+
+        @include screen-size("medium") {
+          display: flex;
+          width: 815px;
+          height: $space-13;
+          margin: -12px -48px 1px;
+        }
+
+        @include screen-size("large") {
+          display: flex;
+          width: 100%;
+        }
+
+        .logo {
+          width: 135px;
+          height: 55px;
+          position: fixed;
+
+          @include screen-size("medium") {
+            margin: $space-19 $space-20;
+          }
+
+          @include screen-size("large") {
+            margin: $space-19 0 0 35px;
+          }
+        }
+      }
+    }
+
+    .subheading {
+      width: 421px;
+      height: 136px;
+      margin: 91px 0 0 -20px;
+      padding: $space-06 $space-16 $space-06 $space-18;
+      background-color: $primary-color-03;
+
+      @include screen-size("medium") {
+        display: flex;
+        width: 846px;
+        height: $space-13;
+        margin: $space-15 -26px $space-05;
+      }
+
+      @include screen-size("large") {
+        display: flex;
+        width: 100%;
+        margin: $space-15 0 $space-14 0;
+        height: $space-13;
+      }
+
+      .Transition-to-your-r {
+        font-family: Aller;
+        font-size: $space-05;
+        font-weight: $fontwg;
+        line-height: 1.2;
+        color: $primary-color-01;
+        text-decoration: none;
+
+        @include screen-size("medium") {
+          margin-left: $space-14;
+        }
+
+        @include screen-size("large") {
+          margin-left: -13px;
+        }
+      }
+    }
+
+    .flex {
+      @include screen-size("medium") {
+        display: flex;
+        position: absolute;
+        top: $space-13;
+        bottom: 0;
+        overflow-y: scroll;
+        width: 100%;
+      }
+
+      @include screen-size("large") {
+        display: flex;
+        position: absolute;
+        top: $space-13;
+        bottom: 0;
+        overflow-y: scroll;
+        width: 100%;
+      }
+
+      .panel-group {
+        margin: $space-23 $space-03;
+        position: sticky;
+        top: 8rem;
+
+        @include screen-size("medium") {
+          display: flex;
+          flex-basis: 33.33%;
+        }
+
+        @include screen-size("large") {
+          display: flex;
+          flex-basis: 33.33%;
+          margin: 114px $space-16 0 0;
+        }
+
+        .panel {
+          border: 1px solid $primary-color-04;
+
+          @include screen-size("medium") {
+            width: 284px;
+            height: 315px;
+            position: sticky;
+            position: -webkit-sticky;
+            top: $space-13;
+          }
+
+          @include screen-size("large") {
+            width: 377px;
+            height: 54px;
+            position: sticky;
+            position: -webkit-sticky;
+            top: $space-13;
+            display: block;
+            border: 1px solid $primary-color-04;
+          }
+
+          .panel-heading {
+            background-color: $primary-color-01 !important;
+            padding: 0;
+            overflow-y: scroll;
+            position: sticky;
+
+            @include screen-size("large") {
+              display: none;
+            }
+
+            .panel-title {
+              padding: 17px 15px;
+
+              &:hover {
+                color: $primary-color-03;
+              }
+
+              &::after {
+                content: "\f106";
+                right: $space-14;
+                position: absolute;
+                font-family: "FontAwesome";
+                color: $primary-color-03;
+                font-size: $space-03;
+              }
+
+              &[aria-expanded="false"]::after {
+                content: "\f107";
+
+                @include screen-size("medium") {
+                  content: "\f106";
+                }
+
+                @include screen-size("large") {
+                  content: "\f106";
+                }
+              }
+            }
+          }
+
+          .panel-collapse {
+            @include screen-size("medium") {
+              display: block;
+              position: sticky;
+              height: auto !important;
+              visibility: visible;
+            }
+
+            @include screen-size("large") {
+              display: block;
+              position: sticky;
+              height: auto !important;
+              visibility: visible;
+            }
+
+            &.hide {
+              top: -53px;
+           
+            }
+
+            .panel-body {
+              @include screen-size("large") {
+                border: 1px solid $primary-color-04;
+                padding-bottom: 13px;
+
+                &:hover {
+                  border-left: 5px solid $primary-color-03;
+                }
+              }
+
+              a {
+                margin-top: 3rem;
+                text-decoration: none;
+                .panel-text {
+                  color: $primary-color-02;
+                  font-size: $space-02;
+                  &:hover {
+                    color: $primary-color-03;
+                    font-weight: $fontwg;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        margin: 15px $space-16 44px $space-03;
+        text-align: justify;
+
+        @include screen-size("medium") {
+          display: flex;
+          flex-basis: 66.66%;
+          overflow-y: auto;
+          margin: 98px $space-07 0 0;
+        }
+
+        @include screen-size("large") {
+          display: flex;
+          flex-basis: 66.66%;
+          overflow-y: auto;
+          margin-top: 112px;
+        }
+
+        p {
+          margin-bottom: $space-03;
+          font-size: $space-02;
+        }
+
+        h5 {
+          .content__sub {
+            font-weight: $fontwg;
+            font-size: $space-02;
+          }
+        }
+
+        h2 {
+          scroll-margin-top: 150px;
+
+          @include screen-size("medium") {
+            scroll-margin-top: $space-05;
+          }
+          @include screen-size("large") {
+            scroll-margin-top: $space-05;
+          }
+
+          .content__head {
+            font-size: $space-04;
+            font-weight: $fontwg;
+          }
+        }
+      }
+    }
+  }
+}
